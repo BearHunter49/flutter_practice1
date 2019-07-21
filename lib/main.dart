@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 import 'cupertino_page.dart';
+import 'Insta_main.dart';
 
 void main() => runApp(MyApp());
 
@@ -9,6 +10,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Startup Name Generator',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        primaryColor: Colors.white,
+        accentColor: Colors.black
+      ),
       home: ChangePage(),
 //      home: RandomWords(),
     );
@@ -23,10 +29,20 @@ class ChangePage extends StatelessWidget {
         title: Text('첫번째 페이지'),
       ),
       body: Center(
-        child: RaisedButton(
-            child: Text('화면 이동'), onPressed: (){
-          Navigator.push(context, MaterialPageRoute(builder: (context) => CupertinoPage()));
-        }
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            RaisedButton(
+                child: Text('화면 이동'), onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => CupertinoPage()));
+            }
+            ),
+            RaisedButton(
+              child: Text('InstaApp'), onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => RootPage()));
+            },
+            )
+          ],
         ),
       ),
 
