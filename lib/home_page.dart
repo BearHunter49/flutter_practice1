@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class HomePage extends StatelessWidget {
+  final FirebaseUser user;
+
+  HomePage(this.user);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,15 +47,14 @@ class HomePage extends StatelessWidget {
                           width: 80.0,
                           height: 80.0,
                           child: CircleAvatar(
-                            backgroundImage: NetworkImage(
-                                'https://pbs.twimg.com/media/C5WybhRVMAAfBUF.jpg'),
+                            backgroundImage: NetworkImage(user.photoUrl),
                           ),
                         ),
                         Text(
-                          '이메일 주소',
+                          user.email,
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        Text('이름'),
+                        Text(user.displayName),
                         Padding(padding: EdgeInsets.all(16.0)),
                         Row(
                             mainAxisAlignment: MainAxisAlignment.center,
